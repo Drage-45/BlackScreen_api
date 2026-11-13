@@ -16,7 +16,7 @@ public class RestController {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @GetMapping("/api/peliculas")
+    @GetMapping("/api/prueba")
     public Map<String,String> conectar(){
 
         String blackScreen = jdbcTemplate.queryForObject(
