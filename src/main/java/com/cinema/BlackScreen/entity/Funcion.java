@@ -10,7 +10,7 @@ public class Funcion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "pelicula_id", nullable = false)
@@ -22,7 +22,7 @@ public class Funcion {
     @Column(nullable = false)
     private LocalTime hora;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String sala;
 
     @Column(nullable = false)
@@ -31,11 +31,11 @@ public class Funcion {
     @Column(name = "cupos_disponibles", nullable = false)
     private Integer cuposDisponibles;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

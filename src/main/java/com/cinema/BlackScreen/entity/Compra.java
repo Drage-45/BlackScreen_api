@@ -9,13 +9,13 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "funcion_id", nullable = false)
     private Funcion funcion;
 
-    @Column(name = "nombre_cliente", nullable = false)
+    @Column(name = "nombre_cliente", nullable = false, length = 100)
     private String nombreCliente;
 
     @Column(name = "cantidad_boletos", nullable = false)
@@ -27,11 +27,11 @@ public class Compra {
     @Column(name = "fecha_compra", nullable = false)
     private LocalDateTime fechaCompra;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

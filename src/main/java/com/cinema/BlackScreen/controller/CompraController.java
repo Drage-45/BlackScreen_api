@@ -28,7 +28,6 @@ public class CompraController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
-        // El servicio maneja internamente el error 409 y 404 lanzando una ResponseStatusException
         Compra nuevaCompra = compraService.registrarCompra(compra);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaCompra);
     }
