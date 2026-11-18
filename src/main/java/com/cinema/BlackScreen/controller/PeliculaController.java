@@ -6,6 +6,7 @@ import com.cinema.BlackScreen.repository.PeliculaRepository;
 import com.cinema.BlackScreen.service.PeliculaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class PeliculaController {
     }
 
     @PostMapping
-    public Pelicula registrarPelicula(@RequestBody Pelicula pelicula){
+    public Pelicula registrarPelicula(@Valid @RequestBody Pelicula pelicula){
         pelicula.setId(null);
         return peliculaService.guardarPelicula(pelicula);
     }

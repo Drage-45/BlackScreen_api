@@ -24,7 +24,7 @@ public class FuncionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Funcion> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Funcion> buscarPorId(@PathVariable Integer id) {
         Optional<Funcion> funcion = funcionService.buscarPorId(id);
         return funcion.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
@@ -40,7 +40,7 @@ public class FuncionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Funcion> actualizar(@PathVariable Long id, @RequestBody Funcion funcion) {
+    public ResponseEntity<Funcion> actualizar(@PathVariable Integer id, @RequestBody Funcion funcion) {
         Optional<Funcion> existente = funcionService.buscarPorId(id);
         if (existente.isPresent()) {
             funcion.setId(id);
@@ -50,7 +50,7 @@ public class FuncionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         Optional<Funcion> existente = funcionService.buscarPorId(id);
         if (existente.isPresent()) {
             funcionService.eliminar(id);

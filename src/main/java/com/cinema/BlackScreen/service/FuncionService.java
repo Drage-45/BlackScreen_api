@@ -17,7 +17,7 @@ public class FuncionService {
         return funcionRepository.findAll();
     }
 
-    public Optional<Funcion> buscarPorId(Long id) {
+    public Optional<Funcion> buscarPorId(Integer id) {
         return funcionRepository.findById(id);
     }
 
@@ -25,7 +25,7 @@ public class FuncionService {
         return funcionRepository.save(funcion);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(Integer id) {
         funcionRepository.deleteById(id);
     }
 }

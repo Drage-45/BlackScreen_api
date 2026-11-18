@@ -1,5 +1,8 @@
 package com.cinema.BlackScreen.entity;
 
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,15 +13,23 @@ public class Pelicula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "El titulo es obligatorio")
+    @Size(max = 100, message = "El titulo no puede superar 100 caracteres")
     @Column(name = "titulo", nullable = false, length = 100)
     private String titulo;
 
+    @NotBlank(message = "El género es obligatorio")
+    @Size(max = 15, message = "El género no puede superar 15 caracteres")
     @Column(name = "genero", nullable = false, length = 15)
     private String genero;
 
+    @NotBlank(message = "La duración es obligatoria")
+    @Size(max = 10, message = "La duración no puede superar 10 caracteres")
     @Column(name = "duracion", nullable = false, length = 10)
     private String duracion;
 
+    @NotBlank(message = "La clasificación es obligatoria")
+    @Size(max = 5, message = "La clasificación no puede superar 5 caracteres")
     @Column(name = "clasificacion", nullable = false, length = 5)
     private String clasificacion;
 
