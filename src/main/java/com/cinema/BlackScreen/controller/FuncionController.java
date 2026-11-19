@@ -1,6 +1,7 @@
 package com.cinema.BlackScreen.controller;
 
 import com.cinema.BlackScreen.entity.Funcion;
+import com.cinema.BlackScreen.repository.ButacaRepository.Butaca;
 import com.cinema.BlackScreen.service.FuncionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,12 +42,12 @@ public class FuncionController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Funcion> actualizar(@PathVariable Integer id, @RequestBody Funcion funcion) {
-        Optional<Funcion> existente = funcionService.buscarPorId(id);
-        if (existente.isPresent()) {
-            funcion.setId(id);
-            return ResponseEntity.ok(funcionService.guardar(funcion));
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return ResponseEntity.ok(funcionService.actualizar(id, funcion));
+    }
+
+    @GetMapping("/{id}/butacas")
+    public List<Butaca> listarButacas(@PathVariable Integer id) {
+        return funcionService.listarButacas(id);
     }
 
     @DeleteMapping("/{id}")

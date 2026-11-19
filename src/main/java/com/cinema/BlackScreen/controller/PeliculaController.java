@@ -46,7 +46,7 @@ public class PeliculaController {
     @PutMapping("/{id}")
     public ResponseEntity<Pelicula> actualizarPelicula(
             @PathVariable Integer id,
-            @RequestBody Pelicula pelicula
+            @Valid @RequestBody Pelicula pelicula
     ) {
         if (peliculaService.buscarPorId(id).isEmpty()) {
             return ResponseEntity.notFound().build();

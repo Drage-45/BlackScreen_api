@@ -33,6 +33,18 @@ public class Pelicula {
     @Column(name = "clasificacion", nullable = false, length = 5)
     private String clasificacion;
 
+    @Size(max = 2000, message = "La sinopsis no puede superar 2000 caracteres")
+    @Column(name = "sinopsis", length = 2000)
+    private String sinopsis;
+
+    @Size(max = 2048, message = "El enlace del póster no puede superar 2048 caracteres")
+    @Column(name = "poster_url", length = 2048)
+    private String posterUrl;
+
+    @Size(max = 2048, message = "El enlace del tráiler no puede superar 2048 caracteres")
+    @Column(name = "trailer_url", length = 2048)
+    private String trailerUrl;
+
     public Pelicula() {
 
     }
@@ -75,5 +87,29 @@ public class Pelicula {
 
     public void setClasificacion(String clasificacion) {
         this.clasificacion = clasificacion;
+    }
+
+    public String getSinopsis() {
+        return sinopsis;
+    }
+
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
+    }
+
+    public String getPosterUrl() {
+        return posterUrl;
+    }
+
+    public void setPosterUrl(String posterUrl) {
+        this.posterUrl = posterUrl;
+    }
+
+    public String getTrailerUrl() {
+        return trailerUrl;
+    }
+
+    public void setTrailerUrl(String trailerUrl) {
+        this.trailerUrl = trailerUrl;
     }
 }

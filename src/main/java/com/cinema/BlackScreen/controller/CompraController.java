@@ -2,20 +2,22 @@ package com.cinema.BlackScreen.controller;
 
 import com.cinema.BlackScreen.entity.Compra;
 import com.cinema.BlackScreen.service.CompraService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cinema.BlackScreen.service.CompraService.CompraRegistrada;
+import com.cinema.BlackScreen.service.CompraService.SolicitudCompra;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/compras")
 @CrossOrigin(origins = "*")
 public class CompraController {
+    private final CompraService compraService;
 
-    @Autowired
-    private CompraService compraService;
+    public CompraController(CompraService compraService) {
+        this.compraService = compraService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Compra>> listarVentas() {
@@ -23,12 +25,7 @@ public class CompraController {
     }
 
     @PostMapping
-    public ResponseEntity<Compra> registrarCompra(@RequestBody Compra compra) {
-        if (compra.getFuncion() == null || compra.getFuncion().getId() == null || compra.getCantidadBoletos() == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-
-        Compra nuevaCompra = compraService.registrarCompra(compra);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevaCompra);
+    public ResponseEntity<CompraRegistrada> registrarCompra(@RequestBody SolicitudCompra compra) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(compraService.registrarCompra(compra));
     }
 }
