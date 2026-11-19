@@ -13,7 +13,7 @@ public class Funcion {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "pelicula_id", nullable = false)
+    @JoinColumn(name = "id_pelicula")
     private Pelicula pelicula;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class Funcion {
     @Column(nullable = false)
     private Double precio;
 
-    @Column(name = "cupos_disponibles", nullable = false)
+    @Column(name = "asientos_disponibles", nullable = false)
     private Integer cuposDisponibles;
 
     public Integer getId() {

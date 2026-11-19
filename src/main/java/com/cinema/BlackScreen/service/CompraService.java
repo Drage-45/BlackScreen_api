@@ -29,6 +29,15 @@ public class CompraService {
     @Transactional
     public Compra registrarCompra(Compra compra) {
 
+        if (compra.getCantidadBoletos() == null ||
+                compra.getCantidadBoletos() <= 0) {
+
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "La cantidad de boletos debe ser mayor que cero"
+            );
+        }
+
         Funcion funcion = funcionRepository.findById(compra.getFuncion().getId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Función no encontrada"));
 
